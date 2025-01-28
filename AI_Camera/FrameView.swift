@@ -10,6 +10,7 @@ import SwiftUI
 struct FrameView: View {
     var image: CGImage?
     private let label = Text("Frame")
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -25,6 +26,20 @@ struct FrameView: View {
                         .padding()
                         .background(Color.red)
                         .cornerRadius(10)
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    HStack {
+                        Image(systemName: "arrow.left.circle")
+                        Text("Back")
+                            .fontWeight(.bold)
+                    }
                 }
             }
         }

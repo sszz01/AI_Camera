@@ -7,6 +7,7 @@
 
 import AVFoundation
 import CoreImage
+import UIKit
 
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
@@ -57,6 +58,11 @@ class FrameHandler: NSObject, ObservableObject {
         
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sampleBufferQueue"))
         captureSession.addOutput(videoOutput)
+        
+        if let connection = videoOutput.connection(with: .video) {
+                connection.videoOrientation = .portrait // display in portrait mode
+        }
+        captureSession.sessionPreset = .photo
     }
 }
 

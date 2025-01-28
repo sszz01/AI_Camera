@@ -32,6 +32,8 @@ struct ContentView: View {
             .padding()
             .navigationTitle("YOLOv11 camera")
         }
+        //TODO: fix default background color
+        .background(Color.white)
     }
 }
 
