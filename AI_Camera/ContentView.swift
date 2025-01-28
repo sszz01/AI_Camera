@@ -8,23 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var model = FrameHandler()
+    
     var body: some View {
         NavigationStack {
             VStack {
                 Text("Press the button to scan the area")
                     .font(.headline)
                     .foregroundStyle(.secondary)
-                Button("Launch Camera") {
-                    print("launch camera...")
+                
+                NavigationLink(destination: FrameView(image: model.frame)) {
+                    Text("Launch Camera")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .shadow(color: .gray, radius: 5, x: 0, y: 5)
+                        .padding(30)
                 }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .cornerRadius(10)
-                .shadow(color: .gray, radius: 5, x: 0, y: 5)
-                .padding(30)
             }
             .padding()
             .navigationTitle("YOLOv11 camera")
@@ -35,3 +38,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+

@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct FrameView: View {
+    var image: CGImage?
+    private let label = Text("Frame")
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if let image = image {
+                Image(image, scale: 1.0, label: label) // orientation: .up
+            } else {
+                ZStack {
+                    Color.black.opacity(0.7)
+                        .ignoresSafeArea()
+                    Text("Error loading the image")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(10)
+                }
+            }
+        }
     }
 }
 
