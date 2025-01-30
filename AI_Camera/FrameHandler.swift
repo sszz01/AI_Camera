@@ -7,7 +7,6 @@
 
 import AVFoundation
 import CoreImage
-import UIKit
 
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
